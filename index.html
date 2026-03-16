@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>539免費報牌 — 每期免費分享</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1228847489407667');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1228847489407667&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #C8181A;
+  --red-dark: #8f0e0e;
+  --gold: #F5C518;
+  --gold-light: #FFF0B3;
+  --black: #1a0f00;
+  --cream: #FFFBF2;
+  --text: #1e1200;
+  --gray: #f5f0e8;
+}
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ══ 頂部警示條 ══ */
+.ticker {
+  background: var(--black);
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 9px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 18s linear infinite;
+}
+@keyframes ticker {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ══ HERO — 報紙大標風格 ══ */
+.hero {
+  background: var(--red);
+  padding: 0;
+  overflow: hidden;
+}
+
+.hero-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 340px;
+}
+
+.hero-left {
+  background: var(--red);
+  padding: 36px 28px 36px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.hero-left::after {
+  content: '';
+  position: absolute;
+  right: -30px; top: 0; bottom: 0;
+  width: 60px;
+  background: var(--red);
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+  z-index: 2;
+}
+
+.stamp {
+  display: inline-block;
+  border: 3px solid rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.9);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  padding: 4px 10px;
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.hero-left h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(34px, 7vw, 52px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.hero-left h1 em {
+  font-style: normal;
+  color: var(--gold);
+  display: block;
+}
+
+.hero-left p {
+  color: rgba(255,255,255,0.8);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.hero-right {
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.ball-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 200px;
+}
+.ball-grid .ball:last-child {
+  grid-column: 2;
+}
+
+.ball {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fffbe0, var(--gold) 50%, #b8860b);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 18px; font-weight: 900;
+  color: var(--red-dark);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.6), inset 0 2px 3px rgba(255,255,255,0.3);
+  animation: spin-float 4s ease-in-out infinite;
+}
+.ball:nth-child(2){animation-delay:.4s}
+.ball:nth-child(3){animation-delay:.8s}
+.ball:nth-child(4){animation-delay:1.2s}
+.ball:nth-child(5){animation-delay:1.6s}
+@keyframes spin-float {
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-6px) rotate(5deg)}
+}
+
+.hero-right-label {
+  color: rgba(255,255,255,0.5);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* ══ CTA 橫條 ══ */
+.cta-bar {
+  background: var(--gold);
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.cta-bar-text {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--red-dark);
+  line-height: 1.4;
+}
+.cta-bar-text span {
+  display: block;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(100,40,0,0.7);
+}
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #06C755;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(6,199,85,0.45);
+  transition: transform .15s, box-shadow .15s;
+  animation: glow 2s ease-in-out infinite;
+}
+.btn-line:hover { transform: scale(1.04); }
+.btn-line svg { width: 22px; height: 22px; flex-shrink: 0; }
+@keyframes glow {
+  0%,100%{box-shadow:0 4px 16px rgba(6,199,85,0.45)}
+  50%{box-shadow:0 6px 28px rgba(6,199,85,0.8)}
+}
+
+/* ══ 三欄特色 ══ */
+.features {
+  background: var(--black);
+  padding: 44px 20px;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  padding-bottom: 80px;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.feat-col {
+  background: rgba(255,255,255,0.04);
+  border-top: 3px solid var(--red);
+  padding: 24px 18px;
+  text-align: center;
+}
+.feat-col:hover { background: rgba(255,255,255,0.07); }
+.feat-num {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.feat-col h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.feat-col p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+/* ══ 見證 — 水平捲動 ══ */
+.testimonials {
+  padding: 54px 0 44px;
+  background: var(--cream);
+}
+.t-heading {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 22px; font-weight: 900;
+  color: var(--red);
+  text-align: center;
+  margin-bottom: 28px;
+  padding: 0 20px;
+}
+.t-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 4px 20px 16px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.t-track::-webkit-scrollbar { display: none; }
+.t-card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 18px;
+  border-bottom: 4px solid var(--gold);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+.stars { color: var(--gold); font-size: 14px; margin-bottom: 8px; }
+.t-card p { font-size: 14px; line-height: 1.7; color: #444; margin-bottom: 12px; }
+.t-card small { font-size: 12px; color: #aaa; }
+.t-hint { text-align: center; font-size: 12px; color: #bbb; margin-top: 4px; }
+
+/* ══ 底部 CTA ══ */
+.cta-final {
+  background: var(--red);
+  padding: 52px 24px;
+  text-align: center;
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+  padding-top: 72px;
+}
+.cta-final h2 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(24px, 6vw, 36px);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.cta-final h2 em {
+  font-style: normal;
+  color: var(--gold);
+}
+.cta-final p {
+  color: rgba(255,255,255,0.8);
+  font-size: 16px;
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+.cta-hint { margin-top: 12px; font-size: 13px; color: rgba(255,255,255,0.4); }
+
+/* ══ Footer ══ */
+footer {
+  background: var(--black);
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* ══ 浮動按鈕 ══ */
+.float-btn {
+  position: fixed;
+  bottom: 22px; right: 18px;
+  background: #06C755;
+  color: #fff;
+  border-radius: 6px;
+  padding: 13px 20px;
+  display: flex; align-items: center; gap: 8px;
+  font-size: 15px; font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(6,199,85,0.6);
+  z-index: 999;
+  animation: float-pulse 2.2s ease-in-out infinite;
+}
+.float-btn svg { width: 20px; height: 20px; }
+@keyframes float-pulse {
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+
+/* ══ RWD ══ */
+@media (max-width: 520px) {
+  .hero-top { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left::after { display: none; }
+  .hero-right { padding: 28px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .ball-grid { max-width: 160px; }
+  .ball { font-size: 15px; }
+  .cta-bar { flex-direction: column; text-align: center; }
+  .features-grid { grid-template-columns: 1fr; }
+  .feat-col { border-top: none; border-left: 3px solid var(--red); text-align: left; display: flex; gap: 14px; align-items: flex-start; }
+  .feat-num { font-size: 32px; min-width: 48px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 跑馬燈 -->
+<div class="ticker">
+  <span class="ticker-inner">🎯 每期開獎前免費分享號碼　｜　完全不收費不推銷　｜　LINE加入即可收到通知　｜　🎯 每期開獎前免費分享號碼　｜　完全不收費不推銷　｜　LINE加入即可收到通知　｜</span>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-top">
+    <div class="hero-left">
+      <div class="stamp">539 免費報牌</div>
+      <h1>每期號碼<em>免費分享</em></h1>
+      <p>研究多年選號方式<br>開獎前直接 LINE 通知你<br>不收費、不推銷</p>
+    </div>
+    <div class="hero-right">
+      <div class="ball-grid">
+        <div class="ball">05</div>
+        <div class="ball">13</div>
+        <div class="ball">27</div>
+        <div class="ball">34</div>
+        <div class="ball">39</div>
+      </div>
+      <div class="hero-right-label">本期參考號碼</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA 橫條 -->
+<div class="cta-bar">
+  <div class="cta-bar-text">
+    現在加入，本期號碼馬上領
+    <span>免費加入，不喜歡隨時可封鎖</span>
+  </div>
+  <a href="https://line.me/ti/p/Km37RyQmDK" class="btn-line" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.04 2 11c0 3.11 1.64 5.86 4.13 7.57V22l3.34-1.84c.82.23 1.68.34 2.53.34 5.52 0 10-4.04 10-9S17.52 2 12 2zm1.1 12.13l-2.56-2.73-5.02 2.73 5.5-5.84 2.63 2.73 4.96-2.73-5.51 5.84z"/></svg>
+    免費加入 LINE
+  </a>
+</div>
+
+<!-- 三欄特色 -->
+<section class="features">
+  <div class="features-grid">
+    <div class="feat-col">
+      <div class="feat-num">每期</div>
+      <h3>固定出牌</h3>
+      <p>每期開獎前發送，不漏期，不用自己追。</p>
+    </div>
+    <div class="feat-col">
+      <div class="feat-num">0元</div>
+      <h3>完全免費</h3>
+      <p>加入後沒有任何收費，也不會推銷任何東西。</p>
+    </div>
+    <div class="feat-col">
+      <div class="feat-num">LINE</div>
+      <h3>直接通知</h3>
+      <p>手機收到通知就能看號碼，操作簡單方便。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 見證 -->
+<section class="testimonials">
+  <div class="t-heading">加入後大家怎麼說</div>
+  <div class="t-track">
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>跟著號碼買了兩個月，中了好幾次，重點是真的免費，沒有騙人！</p>
+      <small>台中 陳大哥・57歲</small>
+    </div>
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>每次開獎前都會收到通知，很方便，推薦給同樣有在玩的朋友。</p>
+      <small>高雄 李阿姨・62歲</small>
+    </div>
+    <div class="t-card">
+      <div class="stars">★★★★☆</div>
+      <p>用LINE收號碼很簡單，老人家也會用，問問題也都有在回覆。</p>
+      <small>新北 王先生・54歲</small>
+    </div>
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>加入一個多月了，號碼準確率不錯，而且完全不會被騷擾推銷。</p>
+      <small>台北 張太太・59歲</small>
+    </div>
+  </div>
+  <p class="t-hint">← 左右滑動查看更多 →</p>
+</section>
+
+<!-- 底部 CTA -->
+<section class="cta-final">
+  <h2>現在加入<br><em>本期免費領號碼</em></h2>
+  <p>加入後傳「領號碼」<br>即可收到本期推薦</p>
+  <a href="https://line.me/ti/p/Km37RyQmDK" class="btn-line" target="_blank" style="font-size:19px; padding:17px 40px; border-radius:8px; display:inline-flex;">
+    <svg viewBox="0 0 24 24" fill="currentColor" style="width:26px;height:26px;"><path d="M12 2C6.48 2 2 6.04 2 11c0 3.11 1.64 5.86 4.13 7.57V22l3.34-1.84c.82.23 1.68.34 2.53.34 5.52 0 10-4.04 10-9S17.52 2 12 2zm1.1 12.13l-2.56-2.73-5.02 2.73 5.5-5.84 2.63 2.73 4.96-2.73-5.51 5.84z"/></svg>
+    立即免費加入
+  </a>
+  <p class="cta-hint">完全免費，不喜歡隨時封鎖</p>
+</section>
+
+<footer>
+  <p>本頁內容僅供娛樂參考，博弈有風險，請理性投注，量力而為。</p>
+</footer>
+
+<!-- 浮動按鈕 -->
+<a href="https://line.me/ti/p/Km37RyQmDK" class="float-btn" target="_blank">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.04 2 11c0 3.11 1.64 5.86 4.13 7.57V22l3.34-1.84c.82.23 1.68.34 2.53.34 5.52 0 10-4.04 10-9S17.52 2 12 2zm1.1 12.13l-2.56-2.73-5.02 2.73 5.5-5.84 2.63 2.73 4.96-2.73-5.51 5.84z"/></svg>
+  免費加入
+</a>
+
+</body>
+</html>
